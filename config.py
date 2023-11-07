@@ -4,5 +4,9 @@ base_folder = "База 1"
 
 site = "https://www.ratsit.se/"
 
-session = [ session_1, session_2 ]
-print(session)
+#session = [ session_1, session_2 ]
+
+# кординаты которые разбивать таблицу на 3 таблицы
+area1 = [56.923, 38.693, 807.715, 191.977]
+area2 = [56.923,212.811,802.506,385.441]
+area3 = [56.923,385.441,804.739,558.815]
