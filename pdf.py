@@ -26,6 +26,8 @@
 # print(result_name[0])
 from tabula import read_pdf
 from config import area1, area2, area3
+import json
+import codecs
 
 pdf_file_path = 'Lönekollen Östersunds kommun sida 94.pdf'
 user = 'Rasooli Abbas'
@@ -36,11 +38,40 @@ tables2 = read_pdf(pdf_file_path, pages=2, output_format='json', area=area2)
 tables3 = read_pdf(pdf_file_path, pages=2, output_format='json', area=area3)
 all_tables = tables1 + tables2 + tables3
 
-# for table in all_tables:
-#     for row in table['data']:
-#         row_text = ' '.join([entry['text'] for entry in row])
-#         if user in row_text:
-#             print(row_text)
 
 
+# if tables3 and 'data' in tables3[0]:
+#     first_table = tables3[0]['data']
+#     for index, row in enumerate(first_table):
+#         print(index)
+# if tables3 and 'data' in tables3[0]:
+#     first_table = tables3[0]['data']
+#     len(first_table)
+#     if first_table:
+#         first_row = first_table[1]
+#         print(codecs.decode(json.dumps(first_row, indent=4),'unicode_escape'))
+def pdfup(user):
+    if tables3 and 'data' in tables3[0]:
+        first_table = tables3[0]['data']
+        for index, row in enumerate(first_table):
+            for json in row:
+                if user in json['text']:
+                    #print(row)
+                    return row
 
+
+texts = {}
+row = pdfup('Rebello Angelina')
+texts["name"] = row[0] ["text"]
+texts["empty"] = row[1] ["text"]
+texts["IA"] = row[2] ["text"]
+texts["LR"] = row[3] ["text"]
+texts["BA"] = row[4] ["text"]
+texts["Lon"] = row[5] ["text"]
+texts["kapital"] = row[6] ["text"]
+print(texts["name"])
+print(texts["IA"])
+print(texts["LR"])
+print(texts["BA"])
+print(texts["Lon"])
+print(texts["kapital"])
